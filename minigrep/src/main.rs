@@ -5,8 +5,7 @@ fn main() {
   let args: Vec<String> = env::args().collect();
 
   // cargo run <query> <filename>
-  let query = &args[1];
-  let filename = &args[2];
+  let (query, filename) = parse_config(&args);
 
   println!("In file: {:#?}", filename);
 
@@ -14,4 +13,11 @@ fn main() {
     .expect("Something went wrong when reading the file");
 
   println!("With text: \n{}", contents);
+}
+
+fn parse_config(args: &[String]) -> (&str, &str) {
+  let query = &args[1];
+  let filename = &args[2];
+
+  (query, filename)
 }
