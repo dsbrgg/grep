@@ -23,7 +23,9 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
   // ? will return the error value from the current function for the caller to handle
   let contents = fs::read_to_string(config.filename)?;
 
-  println!("With text: \n{}", contents);
+  for line in search(&config.query, &contents) {
+    println!("{}", line);
+  }
 
   // using () like this is the idiomatic way to indicate that
   // we’re calling run for its side effects only; it doesn’t return a value we need.
