@@ -1,7 +1,7 @@
 use std::env;
 use std::process;
 
-extern crate minigrep;
+use minigrep;
 use minigrep::Config;
 
 fn main() {
